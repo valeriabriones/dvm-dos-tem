@@ -31,7 +31,7 @@ jobs:
       # - name: test docker build
       #   run: docker build --target cpp-dev --tag cpp-dev:0.0.1 . 
 
-      - name experiment
+      - name: experiment
         run: echo my key ${{ secrets.GCLOUD_KEY }}
 
       # Runs a set of commands using the runners shell
