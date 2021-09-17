@@ -28,8 +28,11 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run thing
         run: echo $(pwd)
-      - name: test docker build
-        run: docker build --target cpp-dev --tag cpp-dev:0.0.1 . 
+      # - name: test docker build
+      #   run: docker build --target cpp-dev --tag cpp-dev:0.0.1 . 
+
+      - name experiment
+        run: echo my key ${{ secrets.GCLOUD_KEY }}
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
