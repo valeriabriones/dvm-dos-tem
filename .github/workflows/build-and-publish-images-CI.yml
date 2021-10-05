@@ -12,15 +12,23 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-steps:
-  - uses: actions/checkout@v2
-    name: Check out code
+jobs:
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
 
-  - uses: mr-smithers-excellent/docker-build-push@v5
-    name: "Publish docker images to GHCR"
-    with:
-      image: dvmdostem-run
-      registry: ghcr.io
-      githubOrg: ua-snap # optional
-      username: ${{ secrets.GHCR_USERNAME }}
-      password: ${{ secrets.GHCR_TOKEN }}
+    steps:
+      - uses: actions/checkout@v2
+        name: Check out code
+
+      - name: Build docker image
+        run: docker build --target cpp-dev --tag cpp-dev:0.0.1 .
+
+      - uses: mr-smithers-excellent/docker-build-push@v5
+        name: "Publish docker images to GHCR"
+        with:
+          image: dvmdostem-run
+          registry: ghcr.io
+          githubOrg: ua-snap # optional
+          username: ${{ secrets.GHCR_USERNAME }}
+          password: ${{ secrets.GHCR_TOKEN }}
