@@ -30,6 +30,6 @@ jobs:
           image: cpp-dev
           target: cpp-dev
           registry: ghcr.io
-          githubOrg: ua-snap # optional
-          username: ${{ github.ua-snap }}
+          #githubOrg: ua-snap # optional
+          username: ${{ github.actor }}
           password: ${{ secrets.GHCR_TOKEN }}
