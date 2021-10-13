@@ -21,15 +21,15 @@ jobs:
       - uses: actions/checkout@v2
         name: Check out code
 
-      #- name: Build docker image
-      #  run: docker build --target cpp-dev --tag cpp-dev:0.0.1 .
+      - name: Build docker image
+        run: docker build --target cpp-dev .
 
       - uses: mr-smithers-excellent/docker-build-push@v5
         name: "Publish docker images to GHCR"
         with:
-          image: cpp-dev
+          image: ua-snap/dvm-dos-tem/cpp-dev
           target: cpp-dev
           registry: ghcr.io
           #githubOrg: ua-snap # optional
-          username: ${{ github.actor }}
+          #username: ${{ github.actor }}
           password: ${{ secrets.GHCR_TOKEN }}

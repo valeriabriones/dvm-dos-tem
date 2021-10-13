@@ -16,9 +16,10 @@
 
 # General dev tools compilers, etc
 FROM ubuntu:focal as cpp-dev
+LABEL org.opencontainers.image.source=https://github.com/ua-snap/dvm-dos-tem
 ENV DEBIAN_FRONTEND=noninteractive
 # Might combine these two using &&, somwewhere I read that is better
-RUN apt-get update
+RUN apt-get update --fix-missing
 # general tools and dependencies for development
 RUN apt-get install -y build-essential git gdb gdbserver doxygen
 # docker build --target cpp-dev --tag cpp-dev:0.0.1 .
@@ -27,6 +28,7 @@ RUN apt-get install -y build-essential git gdb gdbserver doxygen
 # More specific build stuff for compiling dvmdostem and
 # running python scripts
 FROM cpp-dev:0.0.1 as dvmdostem-build
+LABEL org.opencontainers.image.source=https://github.com/ua-snap/dvm-dos-tem
 # dvmdostem dependencies
 RUN apt-get install -y libjsoncpp-dev libnetcdf-dev libboost-all-dev libreadline-dev liblapacke liblapacke-dev
 
