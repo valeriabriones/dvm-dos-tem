@@ -30,6 +30,6 @@ jobs:
           image: ua-snap/dvm-dos-tem/cpp-dev
           target: cpp-dev
           registry: ghcr.io
-          #githubOrg: ua-snap # optional
-          #username: ${{ github.actor }}
+          username: ${{ secrets.GHCR_USERNAME }}
           password: ${{ secrets.GHCR_TOKEN }}
+          githubOrg: ua-snap # optional
